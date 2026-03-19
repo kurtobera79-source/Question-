@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crush kita^^</title>
+    <style>
+        body {margin:0;padding:0;background:linear-gradient(#ffe4e1,#ff69b4);font-family:'Comic Sans MS',cursive;display:flex;justify-content:center;align-items:center;height:100vh;overflow:hidden;}
+        .container {width:380px;height:520px;background:white;border-radius:25px;box-shadow:0 15px 35px rgba(255,105,180,0.3);position:relative;overflow:hidden;}
+        .screen {position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all 0.5s;}
+        .hidden {display:none !important;}
+        img {width:220px;height:220px;margin-bottom:20px;border-radius:20px;}
+        h2, h3 {color:#ff1493;text-align:center;margin:10px 0;padding:0 20px;}
+        .buttons {display:flex;gap:15px;flex-wrap:wrap;justify-content:center;}
+        button {padding:12px 30px;font-size:20px;border:none;border-radius:50px;cursor:pointer;transition:all 0.3s;}
+        .yes {background:#ff1493;color:white;}
+        .maybe {background:#ffa500;color:white;}
+        .react {background:#ddd;color:#333;}
+        .sub-buttons {margin-top:20px;}
+        .fb-msg {font-size:18px;color:#1877f2;margin-top:10px;}
+        .proof-btn {margin-top:20px;padding:12px 30px;background:#0084ff;color:white;font-size:18px;border-radius:50px;cursor:pointer;}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Screen 1: Main question -->
+    <div class="screen" id="main">
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyMmo2ZjdjdzlqZGN4emJuMWFtb2xtbnp5eGUzbDAybDBpeDU2a3U4YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XTK2z2iSD3tmw/giphy.gif" alt="cute">
+        <h2>crush kita^^, may pag asa kaya ako?</h2>
+        <div class="buttons">
+            <button class="yes" onclick="showScreen('yesScreen')">Yes ❤️</button>
+            <button class="maybe" onclick="showScreen('maybeScreen')">Maybe</button>
+            <button class="react" onclick="showReacted()">Reacted 😆 to this post</button>
+        </div>
+    </div>
+
+    <!-- Screen 2: Yes response -->
+    <div class="screen hidden" id="yesScreen">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyejl4dmRxM25ocGxubTI4aGUxMWJ5ZDZ0NjAwNGk0bnFna2xiaTFsdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qGbeKVV2p9Zo70E53g/giphy.gif" alt="happy">
+        <h2>What if e try natin? 😍</h2>
+    </div>
+
+    <!-- Screen 3: Maybe response with sub-choices -->
+    <div class="screen hidden" id="maybeScreen">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyNWljcHlteHI0aW04czhiODR5YzVudHZuaW8zc3Z3ZXZyc3VzMTBnMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aVPNSD4yOfFHyicPAd/giphy.gif" alt="thinking">
+        <h2>So pwede ako manligaw?</h2>
+        <div class="sub-buttons buttons">
+            <button class="yes" onclick="showFinal('Date us?! ^^')">Pwede naman</button>
+            <button class="maybe" onclick="showFinal('Study first muna... focus muna tayo 😊')" >Study first muna</button>
+        </div>
+    </div>
+
+    <!-- Reacted prank screen -->
+    <div class="screen hidden" id="reactScreen">
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaTUzdDhlMHduanBvYWNld3ZkZ3N3eHo4eWpueGY1dThkbG9iMzg0OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/s5GDgGSuEgVuo/giphy.gif" alt="reacted">
+        <h2>You have reacted 😆 to this post</h2>
+        <p class="fb-msg">Facebook • Just now</p>
+        <button class="proof-btn" onclick="alert('Screenshot mo na at isend kay Kurt! 😆')">Send proof kay Kurt</button>
+    </div>
+
+    <!-- Final happy screen (for sub-choices) -->
+    <div class="screen hidden" id="finalScreen">
+        <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyYWpnZXd5ZjN1am12ODVoM2UxcWYxOTh4M3FtbmxwMHIxMHlodDd2MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/R4PB3E77rQxkx2iijN/giphy.gif" alt="love">
+        <h2 id="finalText">I knew it ❤️</h2><div id="proofArea" style="display:none; margin-top:25px; text-align:center;">
+    <button class="proof-btn" onclick="alert('Screenshot mo na at isend kay Kurt! 📸😆')">Send proof kay Kurt</button>
+    </div>
+</div>
+
+<script>
+    function showScreen(screenId) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+        document.getElementById(screenId).classList.remove('hidden');
+    }
+
+    function showReacted() {
+        showScreen('reactScreen');
+        // Optional: pwede mo dagdagan ng alert o auto-share idea kung may specific number
+        // alert("Reacted ka! Sabihin mo kay Kurt ha 😆");
+    }
+
+    function showFinal(message) {
+    document.getElementById('finalText').innerText = message;
+    
+    // Lalabas lang ang proof button kapag "Study first" ang napili
+    if (message.includes("Study first")) {
+        document.getElementById('proofArea').style.display = 'block';
+    } else {
+        document.getElementById('proofArea').style.display = 'none';
+    }
+    
+    showScreen('finalScreen');
+}
+</script>
+
+</body>
+</html>
